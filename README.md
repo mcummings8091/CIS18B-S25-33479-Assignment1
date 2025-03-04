@@ -1,0 +1,1 @@
+This program is fairly simple to use. First, from your command line, use "git clone https://github.com/mcummings8091/CIS18B-S25-33479-Assignment1.git" to clone the repository. Next, compile the included code and run the BankProgram using "java BankProgram".  
