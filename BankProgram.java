@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class BankProgram {
 
     public static boolean isValidInput(int min, int max, int input) { // Method for simple input validation
-        if (input >= min && input <= max) {
+        if (input >= min && input <= max) { // If input is withing range of min & max, inclusive
             return true;
         } else {
             return false;
@@ -52,7 +52,7 @@ public class BankProgram {
     public static void main(String[] args) {
         boolean accountCreated = false; // variable to determine if an account has been created. 
         int userChoice; // Variable for managing user choice
-        BankAccount userAccount = new BankAccount();
+        BankAccount userAccount = new BankAccount(); // Blank BankAccount instance to be filled when user uses "1.) Create Account"
 
         Scanner input = new Scanner(System.in);
 
@@ -65,8 +65,7 @@ public class BankProgram {
             switch (userChoice) {
                 case 1: //  Create Account
 
-                    //BankAccount userAccount = new BankAccount(); // Create new user account instance
-
+                    // try-catch for handling for non numeric values
                     try {
 
                         System.out.print("Enter account holder name: ");
@@ -75,21 +74,19 @@ public class BankProgram {
                         System.out.print("Enter initial deposit: ");
                         userAccount.setAccountBalance(input.nextDouble());
 
-                    } catch (InputMismatchException e) { // Handling for non incorrect values
+                    } catch (InputMismatchException e) { 
                         System.out.println("Invalid Input... Please try again.");
                         input.nextLine();
                     }
 
                     System.out.println("\nAccount created successfully!");
 
-                    //System.out.println("Account name: " + userAccount.getAccountName());
-                    //System.out.println("Account balance: " + userAccount.getAccountBalance());
-
                     accountCreated = true;
                     break;
 
                 case 2: // Deposit Money
 
+                    // Prevent user from option before account creation
                     if (!accountCreated){
                         System.out.println("\nPlease create an account first!\n");
                         break;
@@ -103,11 +100,11 @@ public class BankProgram {
                         input.nextLine();
                     }
 
-                    //System.out.println("Case: 2");S
                     break;
 
                 case 3: // Withdraw
 
+                    // Prevent user from option before account creation
                     if (!accountCreated){
                         System.out.println("\nPlease create an account first!\n");
                         break;
@@ -121,21 +118,20 @@ public class BankProgram {
                         input.nextLine();
                     }         
                     
-                    //System.out.println("Case: 3");
                     break;
 
                 case 4: // Check Balance
 
+                    // Prevent user from option before account creation
                     if (!accountCreated){
                         System.out.println("\nPlease create an account first!\n");
                         break;
                     }
                     userAccount.displayBalance();
                     
-                    //System.out.println("Case: 4");
                     break;
 
-                case 5:
+                case 5: // Exit
 
                     System.out.println("Exiting...");
                     break;
